@@ -1,0 +1,25 @@
+# CLion / IntelliJ
+.idea/
+
+# build folders
+cmake-build-debug/
+cmake-build-release/
+build/
+backup/
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+Makefile
+
+# compiled files
+*.o
+*.so
+*.a
+*.out
+
+# mac
+.DS_Store
+
+# logs
+*.log
