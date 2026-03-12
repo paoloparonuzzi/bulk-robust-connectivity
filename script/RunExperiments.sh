@@ -10,8 +10,13 @@ EXE="./bulkRobustSpan"
 TIME_LIMIT=3600
 OUTPUT_FILE="$PROJECT_ROOT/results/bulk-robust-connectivity.txt"
 
-mkdir -p ../results
+mkdir -p "$PROJECT_ROOT/results"
 : > "$OUTPUT_FILE"
+
+if [ ! -x "$EXE" ]; then
+    echo "Executable $EXE not found. Please compile the project first."
+    exit 1
+fi
 
 echo "Running LP experiments..."
 
