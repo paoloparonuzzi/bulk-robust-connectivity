@@ -1,4 +1,4 @@
-# Bulk Robust Assignment – C++ Implementation
+# Bulk Robust Connectivity – C++ Implementation
 
 This repository contains the C++ implementation accompanying the paper
 
