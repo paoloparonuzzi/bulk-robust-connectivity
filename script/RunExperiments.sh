@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-EXE="./bulkRobustMatch"
+EXE="./bulkRobustSpan"
 TIME_LIMIT=3600
-OUTPUT_FILE="../results/bulk-robust-assignment.txt"
+OUTPUT_FILE="../results/bulk-robust-connectivity.txt"
 
 mkdir -p ../results
 : > "$OUTPUT_FILE"
 
 echo "Running LP experiments..."
 
-nVertex=20
-while [ "$nVertex" -lt 81 ]
+nVertex=40
+while [ "$nVertex" -lt 161 ]
 do
-    for alg in 0 2 3 4
+    for alg in 3 4
     do
         for seed in {0..9}
         do
@@ -25,19 +25,19 @@ do
 
             for nEdge in "$nEdge1" "$nEdge2" "$nEdge3" "$nEdge4"
             do
-                "$EXE" "../instances/Match_${nVertex}_${seed}.txt" "$TIME_LIMIT" "$alg" "$lp" "$nEdge" "$OUTPUT_FILE"
+                "$EXE" "../instances/Flex_${nVertex}_${seed}.txt" "$TIME_LIMIT" "$alg" "$lp" "$nEdge" "$OUTPUT_FILE"
             done
         done
     done
-    nVertex=$((nVertex + 20))
+    nVertex=$((nVertex + 40))
 done
 
 echo "Running MIP experiments..."
 
-nVertex=20
-while [ "$nVertex" -lt 121 ]
+nVertex=40
+while [ "$nVertex" -lt 161 ]
 do
-    for alg in 0 3
+    for alg in 3 4
     do
         for seed in {0..9}
         do
@@ -49,11 +49,11 @@ do
 
             for nEdge in "$nEdge1" "$nEdge2" "$nEdge3" "$nEdge4"
             do
-                "$EXE" "../instances/Match_${nVertex}_${seed}.txt" "$TIME_LIMIT" "$alg" "$lp" "$nEdge" "$OUTPUT_FILE"
+                "$EXE" "../instances/Flex_${nVertex}_${seed}.txt" "$TIME_LIMIT" "$alg" "$lp" "$nEdge" "$OUTPUT_FILE"
             done
         done
     done
-    nVertex=$((nVertex + 20))
+    nVertex=$((nVertex + 40))
 done
 
 echo "All experiments completed successfully."
