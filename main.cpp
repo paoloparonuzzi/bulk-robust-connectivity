@@ -74,5 +74,5 @@ int main(int argc, char**argv){
         problem.output << problem.outputLine << endl;
         problem.output.close();
     }
-    return 1;
+    return 0;
 }
